@@ -8,9 +8,6 @@ describe("POST/sing-up",()=>{
     DELETE FROM users WHERE email = 'test@test.com';
     `)
   })
-  afterAll(() => {
-    connection.end();
-  });
 
     it("returns 400 when input is invalid", async() => {
         const body = {
@@ -48,6 +45,24 @@ describe("POST/sing-up",()=>{
       expect(status).toEqual(201);
     });
 
-
-
 });
+
+describe("POST/sing-in",()=>{
+  afterAll(() => {
+    connection.end();
+  });
+
+    it('retuns body for a valid user', async()=>{
+      const body = {
+        name: "liggia",
+        email: "abacate@salgado.com",
+        password:"12345"
+      };
+
+      const result = await supertest(app).post("/sing-in").send(body);
+
+      expect(result.status).toEqual(200);
+      expect(result.body).toHaveProperty("token")
+    })
+
+})
