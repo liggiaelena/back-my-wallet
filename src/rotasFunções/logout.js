@@ -1,10 +1,10 @@
 import connection from "../database/database.js";
 
 async function logout(req, res){
-    const token = req.headers.authorization?.replace('Bearer  ', '');
+    const token = req.headers.authorization?.replace('Bearer ', '');
 
     if(!token) return res.sendStatus(401);
-    
+   
     try{
         const result = await connection.query(`
         SELECT * FROM sessions

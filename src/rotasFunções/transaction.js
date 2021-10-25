@@ -3,7 +3,7 @@ import { validateTransaction } from '../validateData/validateDate.js';
 
 
 async function postTransaction(req, res){
-    const token = req.headers.authorization?.replace('Bearer  ', '');
+    const token = req.headers.authorization?.replace('Bearer ', '');
     const type = req.params.type;
 
     if(!token) return res.sendStatus(401);

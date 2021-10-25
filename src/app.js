@@ -21,4 +21,4 @@ app.get("/transactions", getTransactions);
 
 app.get("/logout", logout);
 
-app.listen(4000);
+export default app;
