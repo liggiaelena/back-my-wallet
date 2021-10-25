@@ -12,10 +12,10 @@ async function logout(req, res){
         `, [token]);
         
         if(result.rowCount === 0){
-           console.log("entrei")
             res.sendStatus(401);
             return
         }
+        
         await connection.query(`
         DELETE FROM sessions
         WHERE sessions.token = $1;
@@ -27,9 +27,6 @@ async function logout(req, res){
         res.sendStatus(500)
         return
     }
-
-   
-
 }
 
 export{

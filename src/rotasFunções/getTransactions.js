@@ -10,11 +10,8 @@ async function getTransactions(req, res){
         SELECT * FROM sessions
         WHERE sessions.token = $1;
         `, [token]);
-        console.log(result.rows)
         
-       
         if(result.rowCount === 0){
-            console.log("entrei")
             res.sendStatus(401);
             return
         }

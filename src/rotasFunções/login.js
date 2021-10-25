@@ -32,7 +32,6 @@ async function postLogIn(req, res){
        res.sendStatus(404);
        return
     }
-
 }
 
 export{

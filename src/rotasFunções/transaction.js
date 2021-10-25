@@ -15,24 +15,21 @@ async function postTransaction(req, res){
         `, [token]);
        
         if(result.rowCount === 0){
-            console.log("entrei")
             res.sendStatus(401);
             return
         }
 
         const user_id = result.rows[0].user_id;
-        console.log(user_id)
+        const date = new Date();
         const{
             description,
             value
         } = req.body
-        const date = new Date();
 
         const { error } = validateTransaction.validate(req.body);
         
         if(error) {
             res.sendStatus(400) 
-            console.log(error)
             return;
         }
 
